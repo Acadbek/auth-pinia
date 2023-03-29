@@ -16,10 +16,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const data = ref([]);
+const url = import.meta.env.VITE_BASE_URL;
 if (!localStorage.getItem("token")) router.push("/");
 if (localStorage.getItem("token")) {
   axios
-    .get("https://api.escuelajs.co/api/v1/auth/profile", {
+    .get(`${url}/auth/profile`, {
       headers: {
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
